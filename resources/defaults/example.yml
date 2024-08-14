@@ -1,0 +1,51 @@
+_someGeneralType:
+  material: AIR
+  repairable: random
+  item-flags:
+  - HIDE_ATTRIBUTES
+  - HIDE_DESTROYS
+  - HIDE_DYE
+  - HIDE_ENCHANTS
+  - HIDE_PLACED_ON
+  - HIDE_POTION_EFFECTS
+  - HIDE_UNBREAKABLE
+  type: ONE_HANDED
+  is-unbreakable-flag: 'true'
+SomeItemTier0:
+  copy-from: _someGeneralType
+  material: WOODEN_SWORD
+  data: '5'
+  level: from 1 to 10
+  display:
+    display-name: '&2SomeItemName'
+    lore:
+    - '&4Lore is Footer'
+    description:
+    - '&2Desc if Header'
+  max-durability: '200'
+  enchantments:
+  - DAMAGE_ALL:2
+  attributes:
+    physical_damage: 15.0-20.0
+    critical_chance: '+7'
+    max_health: -5%
+    dodge: '5'
+  random-attributes:
+    physical_damage: from +5% to +10% per level 2.5
+    critical_chance: chance 65% from -15% to +15% per level 1.5
+  default-rarity: Common
+  type: ONE_HANDED
+SomeItemTier1:
+  copy-from: SomeItemTier0
+  level: from 11 to 25
+  max-durability: from 200 to 250 per level 5
+  random-rarity:
+    uncommon:
+      chance: 25.0
+    rare:
+      chance: 7.0
+    epic:
+      chance: 1.0
+  attributes:
+    max_health: remove
+  type: ONE_HANDED

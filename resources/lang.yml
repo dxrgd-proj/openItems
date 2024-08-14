@@ -1,0 +1,24 @@
+###############################
+#en_US Language Messages
+###############################
+
+eimodule:
+  header:
+    custom: '&5&l»------>[&6DESC&5&l]'
+    stats: '&5&l»------>[&6STATS&5&l]'
+    lore: '&5&l»------>[&6LORE&5&l]'
+  util:
+    level: '&4Level'
+    rarity: '&5Rarity'
+    type: '&7Type'
+    socket: '&7Socket'
+  type:
+    two-handed: '&7Two-Handed'
+    one-handed: '&7One-Handed'
+    helmet: '&7Helmet'
+    chestplate: '&7Chestplate'
+    leggings: '&7Leggings'
+    boots: '&7Boots'
+    tool: '&7Tool'
+    shield: '&7Shield'
+

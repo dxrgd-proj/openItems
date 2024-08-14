@@ -1,0 +1,9 @@
+
+  # If true, prevents plugin to calculate stats if item in incorrect slot.
+  type-restriction: true
+  # If true, prevents plugin to calculate stats if player has lower level then item required
+  # Compatible with plugins, what use Vanilla EXP bar as own level bar.
+  # But if you want to get compatibility with certain plugin - me in discord: https://discord.gg/vzgyVXSuSF
+  level-restriction: false
+  
+  add-vanilla-damage: truee

@@ -1,0 +1,15 @@
+id: rare
+visual-name: "&cRare"
+
+upgrade-cost-formula: level*5.7 + (level^2)
+reroll-cost-formula: level*15.0
+sell-formula: level*5 + (summAttrs^1.3)
+
+#ATTENTION! Values with more than 3 decimals (ex. 0.003) not render by plugin! Only 2 decimals allowed!
+upgrade:
+  #If item has stats what calculates as percents (ex. +15%) it will be flat-increased by 2.5. (from +15% to +17.5%)
+  percent-stats:
+    all-stats: +2.5
+ #If item has stats what calculates as flat/decimal value (ex +5.7) it will be increased by 5%, (from +5.7 to +5.98)
+  value-stats:
+    all-stats: +5%

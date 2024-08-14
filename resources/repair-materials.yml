@@ -1,0 +1,56 @@
+material-lv0:
+  material: IRON_NUGGET
+  data: '0'
+  repair-value: 150
+  cost-levels: 1
+  display:
+    name: '&7Repair Shard'
+    lore:
+    - '&7Repairs&2 150 &7of item durability'
+    - '&f'
+    - '&7Common Material'
+material-lv1:
+  material: GOLD_NUGGET
+  data: '0'
+  repair-value: 10%
+  cost-levels: 2
+  display:
+    name: '&4Restoration Shard'
+    lore:
+    - '&7Repairs&2 10% &7of item durability'
+    - '&f'
+    - '&4Rare&7 Material'
+material-lv2:
+  material: IRON_INGOT
+  data: '0'
+  repair-value: 500
+  cost-levels: 2
+  display:
+    name: '&4Repair Gem'
+    lore: 
+    - '&7Repairs&2 500 &7of item durability'
+    - '&f'
+    - '&4Rare&7 Material'
+material-lv3:
+  material: GOLD_INGOT
+  data: '0'
+  repair-value: 30%
+  cost-levels: 3
+  display: 
+    name: '&5Restoration Gem'
+    lore:
+    - '&7Repairs&2 30% &7of item durability'
+    - '&f'
+    - '&5Mythical&7 Material'
+material-lv4:
+  material: DIAMOND
+  data: '0'
+  cost-levels: 4
+  repair-value: 5000
+  display:
+    name: '&6Gem of True Restoring'
+    lore:
+    - '&7Repairs&2 5000 &7of item durability'
+    - '&f'
+    - '&6Legendary&7 Material'
+  

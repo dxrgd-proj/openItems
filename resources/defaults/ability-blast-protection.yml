@@ -1,0 +1,14 @@
+blast-protection:
+  type: PLAYER_RECEIVE_DAMAGE
+  action: DAMAGE_MODIFY
+  settings:
+    #Allows to change damage received by player (in percents)
+    # 1.0 = 100% = means damage will not be modified
+    #You can use mathematic formulas here
+    # ex: damage-(0.02*level*durability)
+    # if level is 2 and durability is 4
+    # you will receive a result in 0.84 received damage
+    # and this result will be decreased every durability point
+    modify-damage: damage-(0.2*durability)
+    damage-type: EXPLOSION
+    dicrease-extra-durability: 1

@@ -1,0 +1,19 @@
+name: ${project.name}
+version: ${project.version}-${releaseStatus}
+description: ''
+author: Snoop1CattZ69
+authors: [Snoop1CattZ69, ASL std.]
+website: http://vk.com/aslrb
+
+api-version: 1.13
+
+main: ru.aslteam.ei.EI
+depend: [ejCore]
+softdepend: [NBTAPI, RecipeManager, CustomCrafting]
+
+commands:
+  eitems:
+    description: Main command
+    aliases: [ei]
+    permission: ei.commands.help
+    usage: /eitems help

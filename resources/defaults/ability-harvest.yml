@@ -1,0 +1,16 @@
+harvest:
+  type: RIGHT_CLICK_BLOCK
+  action: HARVEST
+  lore:
+  - '&6Harvester:'
+  - '&f > &7Allows you to harvest crops through right click'
+  settings:
+    radius: 0
+    player-interact-event-per-block: true
+    crops:
+    - BEETROOTS
+    - WHEAT
+    - POTATOES
+    - CARROTS
+    - NETHER_WART
+    - COCOA

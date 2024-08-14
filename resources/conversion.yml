@@ -1,0 +1,36 @@
+####
+#This config file allows you to convert items into EItems;
+#Write the item Material what will be converted for first.
+#
+#After you need to list the all variant for conversion. 
+#!!!NOTE!!! You need to start from 0, and growing by 1  for every variant.
+#
+#All conversions will be triggered by Item Display Name
+#Items will be converted after player pickup item, click on it in inventory, when prepairing crafting,
+#
+#Use 'display-name: none' for vanilla-named items.
+#
+#For saving the item display-name, set 'change-display-name' to false, by default uses true.
+#For vanilla-named this param is always true.
+#
+#   WOODEN_SWORD:
+#     '0':
+#       display-name: none
+#       eitem: SomeItemTier0 
+#    change-display-name: true
+#     '1':
+#       display-name: '&7Super Wooden Sword!'
+#       eitem: SomeItemTier1 
+#    change-display-name: false
+####
+
+IRON_SWORD:
+  '0':
+    display-name: none
+    eitem:
+    - SomeItemTier1 15%
+    - SomeItemTier0 100%
+  '1':
+    display-name: '&7Super Iron Sword!'
+    eitem: SomeItemTier1
+    change-display-name: false

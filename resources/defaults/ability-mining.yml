@@ -1,0 +1,12 @@
+mining:
+  type: BLOCK_BREAK
+  action: MINING
+  lore:
+  - '&6Block-Smasher:'
+  - '&f > &7Allows you to mine 3x3x3 blocks cube'
+  settings:
+    radius: 3
+    blocked-as-whitelist: false
+    block-break-event-per-block: true
+    blocked-blocks:
+    - BEDROCKK
