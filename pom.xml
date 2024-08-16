@@ -1,15 +1,84 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>ru.aslteam</groupId>
+	<groupId>org.dxrgd</groupId>
 	<artifactId>elephantitems</artifactId>
-	<version>1.1.183</version>
+	<version>1.2.0</version>
 	<name>ElephantItems</name>
 
 	<properties>
-		<releaseStatus>DEV</releaseStatus>
+		<releaseStatus>SNAPSHOT</releaseStatus>
+		<java.version>16</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<outputDirectory>..\mc-open-library\core\test-server\plugins</outputDirectory>
+		
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
+
+	<build>
+
+		<sourceDirectory>src</sourceDirectory>
+		<finalName>${project.name}-${project.version}-${releaseStatus}</finalName>
+
+		<resources>
+			<resource>
+				<directory>resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.4.2</version>
+				<configuration>
+					<outputDirectory>${outputDirectory}</outputDirectory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<minimizeJar>false</minimizeJar>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+					<relocations>
+						<relocation>
+							<pattern>de.slikey</pattern>
+							<shadedPattern>org.dxrgd.api.slikey</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>de.tr7zw</pattern>
+							<shadedPattern>org.dxrgd.api.tr7zw</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>de.tr7zw.annotations</pattern>
+							<shadedPattern>org.dxrgd.api.tr7zw.annotations</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>org.bstats</pattern>
+							<shadedPattern>org.dxrgd.core.metrics</shadedPattern>
+						</relocation>
+					</relocations>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
 
 	<dependencies>
 
@@ -19,7 +88,7 @@
 			<version>3.12.0</version>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.dxrgd</groupId>
 			<artifactId>core</artifactId>
@@ -38,7 +107,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
+			<version>1.18.34</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -76,73 +145,5 @@
 		</repository>
 
 	</repositories>
-
-	<build>
-
-		<sourceDirectory>src</sourceDirectory>
-		<finalName>${project.name}-${project.version}-${releaseStatus}</finalName>
-
-		<resources>
-			<resource>
-				<directory>resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-
-		<plugins>
-
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<minimizeJar>false</minimizeJar>
-					<createDependencyReducedPom>false</createDependencyReducedPom>
-					<relocations>
-						<relocation>
-							<pattern>de.slikey</pattern>
-							<shadedPattern>org.aslstd.api.slikey</shadedPattern>
-						</relocation>
-						<relocation>
-							<pattern>de.tr7zw</pattern>
-							<shadedPattern>org.aslstd.api.tr7zw</shadedPattern>
-						</relocation>
-						<relocation>
-							<pattern>org.bstats</pattern>
-							<shadedPattern>org.aslstd.core.metrics</shadedPattern>
-						</relocation>
-					</relocations>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.2.0</version>
-				<configuration>
-					<outputDirectory>C:/development/Plugin Test 1.18.1/plugins</outputDirectory>
-				</configuration>
-			</plugin>
-
-		</plugins>
-
-	</build>
 
 </project>
