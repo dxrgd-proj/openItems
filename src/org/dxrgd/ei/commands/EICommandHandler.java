@@ -139,7 +139,7 @@ public class EICommandHandler extends CommandHandler {
 				pre = pre + " " + args.arg(i);
 
 			final ItemStack stack = ItemStackUtil.toStack(pre);
-			if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return "&4Incorrect item hash! " + args.arg(1);
+			if (!ItemStackUtil.validate(stack, IStatus.HAS_MATERIAL)) return "&4Incorrect item hash! " + pre;
 
 			InventoryUtil.addItem(stack, player);
 			return null;

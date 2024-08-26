@@ -11,12 +11,11 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.dxrgd.api.item.utility.PersistentDataReader;
 import org.dxrgd.api.rpg.attributes.AttrBase;
 import org.dxrgd.api.rpg.attributes.AttrManager;
-import org.dxrgd.ei.NKeys;
 
 import lombok.experimental.Accessors;
 
 @Accessors(fluent = true)
-public class ItemPersistentData {
+public class ItemData {
 
 	private PersistentDataReader reader;
 
@@ -31,45 +30,38 @@ public class ItemPersistentData {
 	private int curdurability;
 	private int maxDurability;
 
-	public ItemPersistentData(ItemStack from) {
+	public ItemData(ItemStack from) {
 		reader = PersistentDataReader.of(from.getItemMeta());
 		attributes = new HashMap<>();
 		abilities = new ArrayList<>();
 
-		if (reader.hasContainer(NKeys.PDC))
-			ei = reader.container(NKeys.PDC);
+		if (reader.hasContainer(Const.PDC))
+			ei = reader.container(Const.PDC);
 		else
 			ei = from.getItemMeta().getPersistentDataContainer().getAdapterContext().newPersistentDataContainer();
 	}
 
 	public void unpack() {
-		if (reader.hasStringList(NKeys.ABILITIES))
-			abilities = reader.stringList(NKeys.ABILITIES);
+		if (reader.hasStringList(Const.ABILITIES))
+			abilities = reader.stringList(Const.ABILITIES);
 
 		for (final AttrBase attr : AttrManager.getAttributes())
 			if (reader.hasString(attr.getKey()))
 				attributes.put(attr.getKey(), reader.string(attr.getKey()));
 
-		if (reader.hasString(NKeys.RARITY))
-			rarity = reader.string(NKeys.RARITY);
+		if (reader.hasString(Const.RARITY)) rarity = reader.string(Const.RARITY);
 
-		if (reader.hasString(NKeys.ITEM_TYPE))
-			type = reader.string(NKeys.ITEM_TYPE);
+		if (reader.hasString(Const.ITEM_TYPE)) type = reader.string(Const.ITEM_TYPE);
 
-		if (reader.hasBool(NKeys.REPAIRABLE))
-			repairable = reader.bool(NKeys.REPAIRABLE);
+		if (reader.hasBool(Const.REPAIRABLE)) repairable = reader.bool(Const.REPAIRABLE);
 
-		if (reader.hasInteger(NKeys.LEVEL))
-			level = reader.integer(NKeys.LEVEL);
+		if (reader.hasInteger(Const.LEVEL)) level = reader.integer(Const.LEVEL);
 
-		if (reader.hasInteger(NKeys.UPGRADES))
-			upgrades = reader.integer(NKeys.UPGRADES);
+		if (reader.hasInteger(Const.UPGRADES)) upgrades = reader.integer(Const.UPGRADES);
 
-		if (reader.hasInteger(NKeys.CUR_DURABILITY))
-			curdurability = reader.integer(NKeys.CUR_DURABILITY);
+		if (reader.hasInteger(Const.CUR_DURABILITY)) curdurability = reader.integer(Const.CUR_DURABILITY);
 
-		if (reader.hasInteger(NKeys.MAX_DURABILITY))
-			maxDurability = reader.integer(NKeys.MAX_DURABILITY);
+		if (reader.hasInteger(Const.MAX_DURABILITY)) maxDurability = reader.integer(Const.MAX_DURABILITY);
 	}
 
 

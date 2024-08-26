@@ -134,7 +134,7 @@ public final class ESimpleItem extends ItemStack {
 		hasAttr = new boolean[AttrManager.getAttributes().size()];
 
 		if (getById(section.toLowerCase()) != null) {
-			Texts.warn("ITEM WITH ID &a" + section + " NOW EXISTS", EI.prefix);
+			Texts.warn("ITEM WITH ID &a" + section + " ALREADY EXISTS", EI.prefix);
 		}
 	}
 
@@ -166,7 +166,7 @@ public final class ESimpleItem extends ItemStack {
 				else
 					single = true;
 			} catch (final NumberFormatException e) {
-				Texts.warn("&4STAT IS BROKEN :&e" + getKey() + ":" + entry.getKey() + "&4, SKIPPED", EI.prefix);
+				Texts.warn("&4ATTR IS BROKEN :&e" + getKey() + ":" + entry.getKey() + "&4, SKIPPED", EI.prefix);
 				continue;
 			}
 
@@ -190,8 +190,8 @@ public final class ESimpleItem extends ItemStack {
 		attributes.clear();
 
 		for (final Entry<String,String> key: attrSet) {
-			final AttrBase stat = AttrManager.get(key.getKey().substring(11));
-			if (stat == null) continue;
+			final AttrBase attr = AttrManager.get(key.getKey().substring(11));
+			if (attr == null) continue;
 
 			String[] split = new String[] { "" };
 			String value = key.getValue();
@@ -203,7 +203,7 @@ public final class ESimpleItem extends ItemStack {
 			}
 
 			final boolean percent = NumUtil.isPercent(value);
-			boolean single = stat.type() != AttrType.RANGE;
+			boolean single = attr.type() != AttrType.RANGE;
 			value = value.replace("%", "");
 			split = value.split("-");
 
@@ -220,9 +220,9 @@ public final class ESimpleItem extends ItemStack {
 
 			double fResultValue = NumUtil.parseDouble(split[0]);
 
-			if (random.containsKey(stat.getKey())) {
+			if (random.containsKey(attr.toString())) {
 
-				final Value val = random.get(stat.getKey()).roll(level);
+				final Value val = random.get(attr.toString()).roll(level);
 
 				if (val != null) {
 					val.setValue(val.getValue().replaceAll("%", ""));
@@ -254,14 +254,14 @@ public final class ESimpleItem extends ItemStack {
 
 			}
 
-			hasAttr[stat.uniquePosition()] = true;
+			hasAttr[attr.uniquePosition()] = true;
 			if (single)
-				attributes.add( Texts.c( stat.convertToLore( dot, Texts.df.format(fResultValue), percent ? "%" : "" ) ) );
+				attributes.add( Texts.c( attr.convertToLore( dot, Texts.df.format(fResultValue), percent ? "%" : "" ) ) );
 			else {
 				split = value.split("-");
 				fResultValue = NumUtil.parseDouble(split[0]);
 				final double sResultValue = NumUtil.parseDouble(split[1]);
-				attributes.add( Texts.c( stat.convertToLore( dot, Texts.df.format(fResultValue), "-", Texts.df.format(sResultValue), percent ? "%" : "" ) ) );
+				attributes.add( Texts.c( attr.convertToLore( dot, Texts.df.format(fResultValue), "-", Texts.df.format(sResultValue), percent ? "%" : "" ) ) );
 			}
 		}
 
@@ -285,7 +285,7 @@ public final class ESimpleItem extends ItemStack {
 			}
 
 			if (str.getKey().equalsIgnoreCase("repairable")) {
-				if (str.getValue().equalsIgnoreCase("random")){
+				if (str.getValue().equalsIgnoreCase("random")) {
 					random.put("repairable", new RandomBool());
 				} else
 					isRepairable = Boolean.parseBoolean(settings.getValue("repairable"));
@@ -322,7 +322,7 @@ public final class ESimpleItem extends ItemStack {
 						Texts.warn("Some trouble happens with item: " + getKey() + " check max durability line.");
 						continue;
 					}
-					random.put("max-durability", ValueParser.getSingleValue(str.getValue()));
+					random.put("max-durability", val);
 				}
 
 				continue;
@@ -339,7 +339,7 @@ public final class ESimpleItem extends ItemStack {
 						continue;
 					}
 
-					random.put(attr.getKey().substring(18).toUpperCase(), ValueParser.getRandomValue(attr.getValue()));
+					random.put(attr.getKey().substring(18).toUpperCase(), val);
 				}
 
 				continue;

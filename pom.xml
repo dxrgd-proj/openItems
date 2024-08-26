@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.dxrgd</groupId>
-	<artifactId>elephantitems</artifactId>
-	<version>1.2.0</version>
-	<name>ElephantItems</name>
+	<artifactId>openitems</artifactId>
+	<version>1.0.0</version>
+	<name>OpenItems</name>
 
 	<properties>
 		<releaseStatus>SNAPSHOT</releaseStatus>

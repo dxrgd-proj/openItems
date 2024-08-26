@@ -10,11 +10,11 @@ import org.dxrgd.api.CustomParams;
 import org.dxrgd.api.bukkit.message.Texts;
 import org.dxrgd.api.bukkit.utility.BasicMetaAdapter;
 import org.dxrgd.api.durability.DManager;
-import org.dxrgd.api.item.utils.ItemUtils;
+import org.dxrgd.api.item.utility.ItemUtils;
 import org.dxrgd.api.open.value.util.NumUtil;
 import org.dxrgd.api.rpg.attributes.AttrBase;
 import org.dxrgd.api.rpg.attributes.AttrManager;
-import org.dxrgd.api.rpg.attributes.Attributes;
+import org.dxrgd.api.rpg.attributes.Attr;
 import org.dxrgd.ei.EI;
 
 import de.tr7zw.changeme.nbtapi.NBTItem;
@@ -26,7 +26,7 @@ public class BasicTest {
 		ItemStack stack = new ItemStack(Material.DIAMOND_SWORD);
 		final ItemMeta meta = stack.getItemMeta();
 
-		meta.setLore(Arrays.asList(AttrManager.get(Attributes.PHYS_DAMAGE).convertToLore("+", "1"),CustomParams.LEVEL.convert("8"), DManager.getDurabilityLore("10")));
+		meta.setLore(Arrays.asList(AttrManager.get(Attr.PHYS_DAMAGE).convertToLore("+", "1"),CustomParams.LEVEL.convert("8"), DManager.getDurabilityLore("10")));
 
 		stack.setItemMeta(meta);
 
@@ -63,7 +63,7 @@ public class BasicTest {
 
 		final ItemStack upgrade = ItemUtils.upgrade(item.getItem());
 
-		if (BasicMetaAdapter.getStringValue(AttrBase.getRegexPattern(AttrManager.get(Attributes.PHYS_DAMAGE)), upgrade).contains("3") &&
+		if (BasicMetaAdapter.getStringValue(AttrBase.getRegexPattern(AttrManager.get(Attr.PHYS_DAMAGE)), upgrade).contains("3") &&
 		BasicMetaAdapter.getStringValue(CustomParams.LEVEL.pattern(), upgrade).contains("9"))
 			Texts.fine("Item Upgrading System works correctly :)");
 		else {

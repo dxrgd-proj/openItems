@@ -1,8 +1,9 @@
-package org.dxrgd.ei;
+package org.dxrgd.api.item.meta;
 
 import org.bukkit.NamespacedKey;
+import org.dxrgd.ei.EI;
 
-public class NKeys {
+public class Const {
 
 	public static final NamespacedKey CUR_DURABILITY = EI.instance().key("ei.durability.current");
 

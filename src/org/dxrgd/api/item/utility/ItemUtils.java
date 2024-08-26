@@ -1,4 +1,4 @@
-package org.dxrgd.api.item.utils;
+package org.dxrgd.api.item.utility;
 
 import java.util.ArrayList;
 import java.util.List;
